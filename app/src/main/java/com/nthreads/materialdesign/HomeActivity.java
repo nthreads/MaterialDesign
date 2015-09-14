@@ -2,18 +2,27 @@ package com.nthreads.materialdesign;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
-public class HomeActivity extends ActionBarActivity {
+public class HomeActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-    }
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -29,11 +38,16 @@ public class HomeActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_sort) {
+            Toast.makeText(this, "You clicked on sort", Toast.LENGTH_LONG).show();
             return true;
         }
 
+        if (id == R.id.action_search) {
+            Toast.makeText(this, "You clicked on search", Toast.LENGTH_LONG).show();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }
+
