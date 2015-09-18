@@ -77,6 +77,8 @@ public class HomeActivity extends AppCompatActivity {
                 menuItem.setChecked(true);
                 drawerLayout.closeDrawers();
 
+                Toast.makeText(getApplicationContext(), msgString, Toast.LENGTH_LONG).show();
+
                 // Android-support-design package is compatible with the newly added Toast a similar control.
                 //SnackbarUtil.show(mViewPager, msgString, 0);
 

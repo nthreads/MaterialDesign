@@ -22,7 +22,7 @@
 
         <item
             android:id="@+id/navItemLogout"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@drawable/ic_nav_logout"
             android:title="@string/action_logout"/>
     </group>
 </menu>
