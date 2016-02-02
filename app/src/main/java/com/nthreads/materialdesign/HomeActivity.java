@@ -1,6 +1,7 @@
 package com.nthreads.materialdesign;
 
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -35,24 +36,10 @@ public class HomeActivity extends AppCompatActivity {
         mActionBarDrawerToggle.syncState();
         drawerLayout.setDrawerListener(mActionBarDrawerToggle);
 
-        float scale =  getApplicationContext().getResources().getDisplayMetrics().density;
-        Toast.makeText(getApplicationContext(), getDensity(scale), Toast.LENGTH_LONG).show();
-
-        // Write their own method of setting operation NavigationView the menu item to be executed after being selected
-        onNavigationViewMenuItemSelected(navigationView);
-
-    }
-
-    /**
-     Operation * Set NavigationView the menu after the item is selected to be executed
-     *
-     * @param navView
-     */
-    private void onNavigationViewMenuItemSelected (NavigationView navView) {
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        // Set navigation item selected listener
+        navigationView.setNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-
                 String msgString = "";
 
                 switch (menuItem.getItemId()) {
@@ -79,13 +66,15 @@ public class HomeActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), msgString, Toast.LENGTH_LONG).show();
 
-                // Android-support-design package is compatible with the newly added Toast a similar control.
-                //SnackbarUtil.show(mViewPager, msgString, 0);
-
-                return  true ;
+                return true;
             }
         });
+
+
+        float scale =  getApplicationContext().getResources().getDisplayMetrics().density;
+        Toast.makeText(getApplicationContext(), getDensity(scale), Toast.LENGTH_LONG).show();
     }
+
 
     private String getDensity(float scale) {
         if (scale == 0.75f)
